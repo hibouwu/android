@@ -1,15 +1,17 @@
-# **Chapitre 1 : Premier Application**
-# **第一章：第一个应用程序**
+# **Chapitre 1 : Premier Application**  **第一章：第一个应用程序**
 
 ## 应用程序 / Application  
+
 应用程序是可以导航的窗口程序集。  
 Une application est un assemblage de fenêtres entre lesquelles il est possible de naviguer.  
 
 ## 活动 / Activité  
+
 这些不同的窗口称为活动。  
 Ces différentes fenêtres sont appelées des activités.  
 
 ### 如何区分活动？ / Comment différencier les activités ?  
+
 - **通过比较图形界面 / En comparant leur interface graphique** :  
   - 如果界面完全不同，则它们是不同的活动。  
     Si elles sont radicalement différentes, c'est qu'il s'agit d'activités différentes.  
@@ -18,20 +20,24 @@ Ces différentes fenêtres sont appelées des activités.
     Votre application ne peut en afficher qu'une à la fois.  
 
 ### 活动的作用 / Rôle de l’Activité  
+
 - 活动是应用程序的一个基本组件，它提供了支持图形界面的结构。  
   Une activité sert de support sur lequel vient se greffer une interface graphique.  
 - 然而，活动并不负责创建和布局图形元素；它只是一个脚手架，在上面可以插入图形对象。  
   Cependant, ce n'est pas le rôle de l’activité de créer et de disposer les éléments graphiques ; elle n'est qu'un échafaudage sur lequel vont s'insérer les objets graphiques.  
 
 ## 图形界面 / Interface Graphique  
+
 图形界面是一组可视化元素，用户可以通过它与应用程序交互，或者获取信息。  
 Une interface graphique est un ensemble d’éléments visuels avec lesquels les utilisateurs peuvent interagir ou qui leur fournissent des informations.  
 
 ## Context（上下文）  
+
 活动还包含关于应用程序当前状态的信息，这些信息称为 Context。  
 Une activité contient des informations sur l’état actuel de l’application : ces informations s’appellent le **context**.  
 
 ### Context 的作用 / Rôle du Context  
+
 - Context 充当了 Android 系统与应用程序不同部分之间的桥梁。  
   Ce context constitue un lien entre le système Android et les différentes activités de l’application.  
 - Context 代表的是应用程序当前的运行环境，包括：  
@@ -43,7 +49,9 @@ Une activité contient des informations sur l’état actuel de l’application 
 ![图 0](images/34f39f6e4dc1742f4cc69ab0d0e324e517aeeedb0020749f26a0317db0119aed.png)
 
 ## **示例 / Exemple**  
+
 ### **情况 / Situation**  
+
 假设你正在用手机浏览 **Zero** 网站，同时在同一部手机上播放音乐。  
 Imaginez que vous naviguiez sur le **Site du Zéro** avec votre téléphone, tout en écoutant de la musique sur ce même téléphone.  
 
@@ -61,6 +69,7 @@ Il se passe alors deux choses dans votre système :
 ---
 
 ### **结论 / Conclusion**  
+
 - 这意味着至少有两个应用程序在同时运行。  
   On a ainsi au moins deux applications lancées en même temps.  
 - **然而，浏览器显示一个活动，而音频播放器没有显示活动。**  
@@ -68,13 +77,14 @@ Il se passe alors deux choses dans votre système :
 - **这说明 Context 是可以同时运行的，但不同的应用程序有不同的活动。**  
   Cela signifie que plusieurs contextes peuvent fonctionner simultanément, mais que chaque application a ses propres activités.  
 
-
 ![图 1](images/592f658b4804add4d33b4bae8fc76efe0f7bcf551fb68ce22f16dce6f9d4532f.png)  
 
 ## États d'une activité / 活动报告
 
 ### Gestion des activités sous Android  
+
 #### Principe général / 基本原则  
+
 Si un utilisateur reçoit un appel, il devient plus important qu'il puisse y répondre que d'émettre la chanson que votre application diffuse.  
 **如果用户接到电话，对他们来说，接听电话比播放应用程序正在播放的歌曲更重要。**  
 
@@ -90,6 +100,7 @@ Votre activité existera dans plusieurs états au cours de sa vie, par exemple u
 **您的活动在其生命周期内会有几种状态，例如用户操作时的活动状态，以及用户接到呼叫时的暂停状态。**  
 
 #### La pile d'activités / 活动栈  
+
 - Lorsque votre application est lancée, elle est placée en haut de la pile d'activités.  
   **当应用程序启动时，它会被放置在活动栈的最顶端。**  
 - L'activité que voit l'utilisateur est celle qui se trouve au sommet de la pile.  
@@ -114,10 +125,10 @@ Votre activité existera dans plusieurs états au cours de sa vie, par exemple u
 - **Une seule activité visible à la fois** : l'application qui est au sommet de la pile est celle qui est affichée.  
   **同一时间只能显示一个活动：位于栈顶的应用程序才是当前可见的。**  
 
-
 ## Cycle de vie d'une activité / 活动生命周期
 
 ### Introduction / 介绍  
+
 Une activité n'a pas de contrôle direct sur son propre état (et par conséquent vous non plus en tant que programmeur), il s'agit plutôt d'un cycle rythmé par les interactions avec le système et d'autres applications.  
 **活动无法直接控制自己的状态（因此，作为程序员的您也无法控制它），相反，它是一个与系统和其他应用程序交互的循环。**  
 
@@ -140,10 +151,12 @@ Ces composants se trouvent dans le package `android.app.Activity`.
 **这些组件位于 `android.app.Activity` 包中。**  
 
 #### 📌 **Rappel sur les packages / 关于包的提醒**  
+
 Un package est un répertoire qui permet d'organiser notre code source, un récipient dans lequel nous allons mettre nos classes de façon à pouvoir trier notre code et différencier des classes qui auraient le même nom.  
 **包是一个组织源代码的目录，它充当一个容器，使我们能够分类代码并区分具有相同名称的类。**  
 
 ##### **Exemple / 例子**
+
 Supposons que vous ayez deux classes `X`, mais avec des usages différents. Sans organisation, il serait impossible de les différencier lorsque vous instanciez un objet `X`. Java générerait une erreur indiquant qu'il ne sait pas à quelle classe `X` vous faites référence.  
 **假设你有两个 `X` 类，但用途不同。如果没有组织，它们将无法区分，并且 Java 会报错，无法判断你指的是哪个 `X` 类。**  
 
@@ -151,6 +164,7 @@ C'est comme essayer de stocker deux fichiers ayant le même nom dans un même r�
 **这就像在同一目录下存放两个同名文件一样，这是不可能的。**  
 
 ##### **Solution : la hiérarchie des packages / 解决方案：包的层次结构**
+
 Pour éviter cette confusion, on utilise une hiérarchie de packages :  
 **为了避免这种问题，我们使用包的层次结构：**  
 
@@ -161,6 +175,7 @@ Pour éviter cette confusion, on utilise une hiérarchie de packages :
 
 Dans le cas d'un navigateur web, on pourrait avoir des packages comme :  
 **例如，网络浏览器的代码可能会有以下包结构：**  
+
 - `Web.Affichage.Image`  
 - `Web.Affichage.Video`  
 - `Web.Telechargement`  
@@ -173,6 +188,7 @@ Les **vues** (ou *views* en anglais) sont les composants graphiques qui viennent
 **视图（Views）是附加到活动结构上的图形组件。**  
 
 #### **📌 Définition des vues / 视图的定义**
+
 - Une vue est l'unité de base de l'interface graphique.  
   **视图是图形界面的基本单元。**  
 - Son rôle est de fournir du contenu visuel avec lequel il est possible d'interagir.  
@@ -236,4 +252,5 @@ public class MainActivity extends Activity {
     }
 }
 ```
+
 ---
