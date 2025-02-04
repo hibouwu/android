@@ -1,4 +1,5 @@
-# Android
+# **Chapitre 1 : Premier Application**
+# **第一章：第一个应用程序**
 
 ## 应用程序 / Application  
 应用程序是可以导航的窗口程序集。  
@@ -195,5 +196,44 @@ Nous verrons plus tard comment organiser ces vues efficacement.
 - **Les vues constituent les éléments graphiques d'une activité** et peuvent être disposées à l'aide de conteneurs.  
   **视图是活动的图形界面元素，并且可以使用容器进行排列。**  
 
+```java
+package com.siteduzero.mapremiereapplication;
 
+import android.os.Bundle;
+//utilisé pour stocker des données lors du changement d’état de l’activité.
+//用于在活动改变状态时存储数据。
+import android.app.Activity; 
+//représente une activité Android.Activity ：表示 Android 活动。
+import android.widget.TextView;
+//composant pour afficher du texte à l’écran ：用于在屏幕上显示文本的组件。
 
+/* 
+ * Classe MainActivity : représente l’activité principale de l’application.
+ * Elle hérite de la classe Activity et crée un TextView pour afficher du texte à l’écran.
+ * */
+public class MainActivity extends Activity {
+    private TextView texte = null;
+    /*  
+    * Méthode onCreate : crée l’activité et crée la vue TextView.
+    * Elle est appelée lorsque l’activité est créée.
+    * @param savedInstanceState : contient les données de l’activité sauvegardées du type Bundle.
+    * Si l'activité est lancée pour la première fois, savedInstanceState vaut null.如果活动是首次启动， savedInstanceState 就是 null 。
+    * Si l'activité redémarre après une interruption, savedInstanceState contient les données enregistrées précédemment.如果活动在中断后重新开始， savedInstanceState 包含先前保存的数据。
+    * */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        //crée l’activité ：创建活动。
+        super.onCreate(savedInstanceState);
+
+        //crée la vue TextView ：创建 TextView 视图。
+        texte = new TextView(this);
+        //Méthode setText : modifie le texte affiché par la vue TextView.
+        //setText 方法用于设置或修改 TextView 显示的文本。
+        texte.setText("Bonjour, vous me devez 1 000 000€.");
+
+        //ajoute la vue TextView à l’activité ：将 TextView 视图添加到活动中。
+        setContentView(texte);
+    }
+}
+```
+---
